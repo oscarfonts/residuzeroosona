@@ -13,7 +13,7 @@ const SidePanelContent = ({categories, selectedCategories, onChangeSelectedCateg
   return <Stack sx={{height: '100%'}}>
 
     <SectionTitle titleKey='Buscar'/>
-    <SearchBox text={searchText} onTextChange={setSearchText} dense={true}></SearchBox>
+    <SearchBox text={searchText} onTextChange={setSearchText} dense={true} onSearchClick={setSearchText}></SearchBox>
 
     <SectionTitle titleKey='Selecciona categoria'/>
     <Switchpad categories={categories} selected={selectedCategories} onSelectionChange={onChangeSelectedCategories}></Switchpad>

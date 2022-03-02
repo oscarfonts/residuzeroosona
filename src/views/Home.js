@@ -27,7 +27,7 @@ const Home = () => {
 
   // console.log(11, tipus);
 
-  const categories = Object.keys(tipus).map(t=> ({id: t,  color: tipus[t][0], label: t}));
+  const categories = Object.keys(tipus).map(t=> ({id: t,  color: tipus[t][1], label: t}));
   const sidePanelContent = <SidePanelContent categories={categories} selectedCategories={selectedCategories} onChangeSelectedCategories={setSelectedCategories} searchText={searchText} setSearchText={setSearchText}/>;
 
   const locals = {
