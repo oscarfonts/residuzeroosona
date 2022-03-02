@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import Layout from '../components/Layout';
 import SidePanelContent from '../components/SidePanelContent';
@@ -8,7 +8,9 @@ import {INITIAL_MAPSTYLE_URL} from '../config';
 import useFetch from '../hooks/useFetch';
 
 const Home = () => {
-  const [mapStyle, setMapStyle] = useState(INITIAL_MAPSTYLE_URL);
+  const mapStyle = INITIAL_MAPSTYLE_URL;
+
+  const sidePanelContent = <SidePanelContent/>;
 
   const {data: rawTipus} = useFetch('https://sheets.googleapis.com/v4/spreadsheets/1fjBWJjionkbsll_YdisD31Houzxcu1nwTbNCVBWvitY/values/Tipus?valueRenderOption=UNFORMATTED_VALUE&key=AIzaSyDZR5KUCYmbQdp6srPiGP6qLhtzZEeq8r4');
   const {data: rawLocals} = useFetch('https://sheets.googleapis.com/v4/spreadsheets/1fjBWJjionkbsll_YdisD31Houzxcu1nwTbNCVBWvitY/values/Locals?valueRenderOption=UNFORMATTED_VALUE&key=AIzaSyDZR5KUCYmbQdp6srPiGP6qLhtzZEeq8r4');
@@ -50,11 +52,6 @@ const Home = () => {
   };
 
   //console.log(locals);
-
-  const sidePanelContent = <SidePanelContent
-    mapStyle={mapStyle}
-    onMapStyleChanged={setMapStyle}
-  />;
 
   const mainContent = <MainContent
     mapStyle={mapStyle}
