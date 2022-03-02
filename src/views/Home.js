@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import Layout from '../components/Layout';
 import SidePanelContent from '../components/SidePanelContent';
@@ -7,7 +7,8 @@ import MainContent from '../components/MainContent';
 import useFetch from '../hooks/useFetch';
 
 const Home = () => {
-  const sidePanelContent = <SidePanelContent/>;
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [searchText, setSearchText] = useState('');
 
   const {data: rawTipus} = useFetch('https://sheets.googleapis.com/v4/spreadsheets/1fjBWJjionkbsll_YdisD31Houzxcu1nwTbNCVBWvitY/values/Tipus?valueRenderOption=UNFORMATTED_VALUE&key=AIzaSyDZR5KUCYmbQdp6srPiGP6qLhtzZEeq8r4');
   const {data: rawLocals} = useFetch('https://sheets.googleapis.com/v4/spreadsheets/1fjBWJjionkbsll_YdisD31Houzxcu1nwTbNCVBWvitY/values/Locals?valueRenderOption=UNFORMATTED_VALUE&key=AIzaSyDZR5KUCYmbQdp6srPiGP6qLhtzZEeq8r4');
@@ -21,7 +22,12 @@ const Home = () => {
       }, {}
     ) : {};
 
-  //console.log(tipus);
+  // console.log(11, tipus);
+
+  useEffect(() => setSelectedCategories(Object.keys(tipus)), [rawTipus]);
+
+  const categories = Object.keys(tipus).map(t=> ({id: t,  color: tipus[t][1], label: t}));
+  const sidePanelContent = <SidePanelContent categories={categories} selectedCategories={selectedCategories} onChangeSelectedCategories={setSelectedCategories} searchText={searchText} setSearchText={setSearchText}/>;
 
   const locals = {
     type: 'FeatureCollection',
