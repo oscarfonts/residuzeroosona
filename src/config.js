@@ -1,9 +1,9 @@
 import {FlyToInterpolator} from 'react-map-gl';
 
 export const INITIAL_VIEWPORT = {
-  latitude: 41.4,
-  longitude: 2.2,
-  zoom: 5,
+  latitude: 41.93,
+  longitude: 2.25,
+  zoom: 10,
   bearing: 0,
   pitch: 0,
   transitionDuration: 1000,

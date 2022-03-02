@@ -8,8 +8,6 @@ import Box from '@mui/material/Box';
 import ResponsiveHeader from '@geomatico/geocomponents/ResponsiveHeader';
 import SidePanel from '@geomatico/geocomponents/SidePanel';
 
-import Logo from './icons/Logo';
-
 import {DRAWER_WIDTH} from '../config';
 import {useTheme} from '@mui/styles';
 
@@ -36,8 +34,8 @@ const Layout = ({mainContent, sidePanelContent}) => {
   return (
     <>
       <ResponsiveHeader
-        title='Residu Zero a Osona'
-        logo={<img src="/images/logoResideZero.png" style={{height: '48px'}}/>}
+        title='Mapa de Comerços Residu Zero a Osona'
+        logo={<img src="images/logo.png" alt="Logo Residu Zero Osona" style={{height: '48px'}}/>}
         onStartIconClick={widescreen ? undefined : handleClose}
         isStartIconCloseable={isSidePanelOpen}
         sx={{
