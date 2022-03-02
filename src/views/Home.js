@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 import Layout from '../components/Layout';
 import SidePanelContent from '../components/SidePanelContent';
@@ -21,8 +21,6 @@ const Home = () => {
         return obj;
       }, {}
     ) : {};
-
-  // console.log(11, tipus);
 
   useEffect(() => setSelectedCategories(Object.keys(tipus)), [rawTipus]);
 
@@ -54,11 +52,19 @@ const Home = () => {
       })) : []
   };
 
-  //console.log(locals);
+  const categoryFilter = feature => selectedCategories.includes(feature.properties.tipus);
+
+  const textFilter = feature => ['nom', 'adreça', 'poblacio', 'descripcio']
+    .some(prop => feature.properties[prop].includes(searchText));
+
+  const filteredLocals = useMemo(() => ({
+    ...locals,
+    features: locals.features.filter(categoryFilter).filter(textFilter)
+  }), [selectedCategories, searchText]);
 
   const mainContent = <MainContent
     tipus={tipus}
-    locals={locals}
+    locals={filteredLocals}
   />;
 
   return <Layout
