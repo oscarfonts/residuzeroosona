@@ -55,6 +55,8 @@ const Home = () => {
 
   const mainContent = <MainContent
     mapStyle={mapStyle}
+    tipus={tipus}
+    locals={locals}
   />;
 
   return <Layout
