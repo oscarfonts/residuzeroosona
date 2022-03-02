@@ -1,11 +1,12 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 
 import Map from '@geomatico/geocomponents/Map';
-import {Popup} from 'react-map-gl';
+import {FlyToInterpolator, Popup, WebMercatorViewport} from 'react-map-gl';
 
 import {INITIAL_VIEWPORT, INITIAL_MAPSTYLE_URL} from '../config';
 import styled from '@mui/styles/styled';
+import bbox from '@turf/bbox';
 
 const PopupWrapper = styled(Popup)({
   cursor: 'default',
@@ -90,6 +91,31 @@ const MainContent = ({tipus: colors, locals}) => {
   const handleHover = event => event.features[0] && setSelectedFeature(event.features[0]);
 
   const handleClick = event => setSelectedFeature(event.features[0]);
+
+  const flyToBbox = () => {
+    if (viewport.width && viewport.height && locals.features.length) {
+      const [minLng, minLat, maxLng, maxLat] = bbox(locals);
+      const {longitude, latitude, zoom} = new WebMercatorViewport(viewport)
+        .fitBounds(
+          [[minLng, minLat],[maxLng, maxLat]],
+          {padding: 40}
+        );
+      setViewport({
+        ...viewport,
+        longitude,
+        latitude,
+        zoom: Math.min(zoom, 17),
+        bearing: 0,
+        transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+        transitionDuration: 'auto'
+      });
+    }
+  };
+
+  useEffect(() => {
+    flyToBbox();
+    setSelectedFeature(undefined);
+  }, [locals]);
 
   const popupContent = useMemo(() => {
     if (selectedFeature) {

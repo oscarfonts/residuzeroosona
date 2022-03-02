@@ -36,6 +36,7 @@
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/react": "^6.3.12",
+    "@turf/bbox": "^6.5.0",
     "babel-loader": "^8.2.2",
     "chai": "^4.3.4",
     "copy-webpack-plugin": "^9.1.0",

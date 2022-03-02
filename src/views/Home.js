@@ -54,8 +54,10 @@ const Home = () => {
 
   const categoryFilter = feature => selectedCategories.includes(feature.properties.tipus);
 
+  const normalize = string => string.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
   const textFilter = feature => ['nom', 'adreça', 'poblacio', 'descripcio']
-    .some(prop => feature.properties[prop].includes(searchText));
+    .some(prop => normalize(feature.properties[prop]).includes(normalize(searchText)));
 
   const filteredLocals = useMemo(() => ({
     ...locals,
