@@ -49,7 +49,7 @@ const MainContent = ({tipus: colors, locals}) => {
     }
   };
 
-  const layers = [{
+  const layers = colorMatchArray.length ? [{
     id: 'punts',
     type: 'circle',
     source: 'comerços',
@@ -85,7 +85,7 @@ const MainContent = ({tipus: colors, locals}) => {
       'text-halo-color': '#FFFFFF',
       'text-halo-width': 1
     }
-  }];
+  }] : [];
 
   const handleHover = event => event.features[0] && setSelectedFeature(event.features[0]);
 

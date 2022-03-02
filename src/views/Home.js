@@ -60,7 +60,7 @@ const Home = () => {
   const filteredLocals = useMemo(() => ({
     ...locals,
     features: locals.features.filter(categoryFilter).filter(textFilter)
-  }), [selectedCategories, searchText]);
+  }), [selectedCategories, searchText, locals]);
 
   const mainContent = <MainContent
     tipus={tipus}
