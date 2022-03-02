@@ -36,8 +36,8 @@ const Layout = ({mainContent, sidePanelContent}) => {
   return (
     <>
       <ResponsiveHeader
-        title='Pasión por la información geográfica'
-        logo={<Logo/>}
+        title='Residu Zero a Osona'
+        logo={<img src="/images/logoResideZero.png" style={{height: '48px'}}/>}
         onStartIconClick={widescreen ? undefined : handleClose}
         isStartIconCloseable={isSidePanelOpen}
         sx={{
