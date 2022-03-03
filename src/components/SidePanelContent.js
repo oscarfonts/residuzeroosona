@@ -18,9 +18,11 @@ const SidePanelContent = ({categories, selectedCategories, onChangeSelectedCateg
     <SectionTitle titleKey='Filtra per categoria'/>
     <SwitchPad categories={categories} selected={selectedCategories} onSelectionChange={onChangeSelectedCategories}/>
 
-    <Link style={{flexGrow: 2, position: 'relative', minHeight: 25}} href='https://geomatico.es' target='_blank'>
-      <img src={Logo_geomatico} width={80} alt='geomatico.es' style={{position: 'absolute', bottom: 0, right: 0}}/>
-    </Link>
+    <Stack sx={{display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', flexGrow: 2, minHeight: 25}}>
+      <Link href="https://geomatico.es" target="_blank" sx={{display: 'flex', alignItems: 'flex-end'}}>
+        <img src={Logo_geomatico} width={80} alt="geomatico.es"/>
+      </Link>
+    </Stack>
   </Stack>;
 };
 
