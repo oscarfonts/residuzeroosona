@@ -10,7 +10,7 @@ export const INITIAL_VIEWPORT = {
   transitionInterpolator: new FlyToInterpolator(),
 };
 
-export const INITIAL_MAPSTYLE_URL = 'https://geoserveis.icgc.cat/contextmaps/positron.json';
+export const INITIAL_MAPSTYLE_URL = 'https://geoserveis.icgc.cat/contextmaps/icgc_mapa_base_gris_simplificat.json';
 
 export const WIDESCREEN_STEP = '770px';
 export const DRAWER_WIDTH = '300px';
